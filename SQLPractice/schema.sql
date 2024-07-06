@@ -76,3 +76,28 @@ VALUES
 ('BRA', 'Spanish', 'F', 1.0);
 
 SELECT * FROM countrylanguage;
+
+INSERT INTO country (Code, Name, Continent, Region, SurfaceArea, IndepYear, Population, LifeExpectancy, GNP, GNPOld, LocalName, GovernmentForm, HeadOfState, Capital, Code2) 
+VALUES 
+('IND', 'India', 'Asia', 'Southern Asia', 3287263.00, 1947, 1400000000, 69.7, 2875142.00, 2712190.00, 'Bharat', 'Federal Republic', 'Droupadi Murmu', 1, 'IN');
+
+INSERT INTO City (ID, Name, CountryCode, District, Population) 
+VALUES 
+(1, 'Mumbai', 'IND', 'Maharashtra', 20411000),
+(2, 'Delhi', 'IND', 'Delhi', 16787941),
+(3, 'Bangalore', 'IND', 'Karnataka', 8443675),
+(4, 'Hyderabad', 'IND', 'Telangana', 6809970),
+(5, 'Ahmedabad', 'IND', 'Gujarat', 5570585);
+
+-- for testing purposes
+INSERT INTO CountryLanguage (CountryCode, Language, IsOfficial, Percentage) 
+VALUES 
+('IND', 'Hindi', 'T', 43.6),
+('IND', 'English', 'T', 12.2),
+('IND', 'Bengali', 'T', 8.9),
+('IND', 'Telugu', 'T', 7.7),
+('IND', 'Marathi', 'T', 6.9);
+
+UPDATE country SET Capital = 2 WHERE Code = 'IND';
+
+SELECT * FROM country;
