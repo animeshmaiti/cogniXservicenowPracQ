@@ -119,3 +119,55 @@ join city on country.code=city.CountryCode
 where city.Population < 1000000;
 
 --23.
+SELECT country.Name,country.Population,sum(city.Population) as TotalPopulationCity from country
+join city on country.code=city.CountryCode
+GROUP BY country.Name,country.Population
+HAVING TotalPopulationCity > country.Population/10;
+
+--24.
+SELECT country.Name,count(city.Name) as NumCities from country
+join city on country.code=city.CountryCode
+GROUP BY country.Name
+order by NumCities desc
+LIMIT 1;
+
+-- 25.
+SELECT country.Name,countrylanguage.Language from country
+join countrylanguage on country.code=countrylanguage.CountryCode
+where countrylanguage.Language='English' AND countrylanguage.IsOfficial!='T' AND countrylanguage.Percentage>50;
+
+-- 26.
+SELECT Name,
+CASE
+    WHEN Population < 1000000 THEN 'Small'
+    WHEN Population >=1000000 AND Population < 10000000 THEN 'Medium'
+    ELSE 'Large'
+END AS PopulationCategory
+from country;
+
+-- 27.
+SELECT Name,
+    CASE
+        WHEN GNP <100000000000 THEN 'Low'
+        WHEN GNP >=100000000000 AND GNP < 1000000000000 THEN 'Medium'
+        ELSE 'High'
+    END AS GNPCategory
+from country;
+
+-- 28.
+SELECT Name,
+    CASE
+        WHEN Population < 100000 THEN 'Small'
+        WHEN Population >=100000 AND Population < 1000000 THEN 'Medium'
+        ELSE 'Large'
+    END AS PopulationCategory
+from city;
+
+-- 29.
+SELECT Name,
+    CASE
+        WHEN LifeExpectancy < 50 THEN 'Low'
+        WHEN LifeExpectancy >=50 AND LifeExpectancy < 75 THEN 'Medium'
+        ELSE 'High'
+    END as LifeExpectancyCategory
+from country;
