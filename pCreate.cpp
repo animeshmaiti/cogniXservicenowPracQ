@@ -33,7 +33,7 @@ int genPin(int input1,int input2,int input3){
     int tens3=getTenDigit(input3);
 
     int hundred1=getHunDigit(input1);
-    int hundred2=getHunDigit(input3);
+    int hundred2=getHunDigit(input2);
     int hundred3=getHunDigit(input3);
 
     int minUnit=min({unit1,unit2,unit3});
